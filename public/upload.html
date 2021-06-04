@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS JQuery and Filepong -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="/styles.css">
+    <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <title>Voting Page</title>
+  </head>
+  <body>
+    <h1 class="text-center toptitle">Upload post</h1>
+
+    <div class='jumbotron jumbo-bg'>
+
+      <div class="container">
+        <div class="card">
+          <div class="card-header">
+            <div class="form-group">
+              <label for="postTitle">Post Title</label>
+              <input type="email" class="form-control" id="postTitle" placeholder="Enter Title">
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="form-group">
+              <label for="postContent">Post Content</label>
+              <textarea class="form-control" id="postContent" rows="10" placeholder="Enter Post"></textarea>
+            </div>
+          </div>
+<!--          <div class="card-footer">-->
+<!--            &lt;!&ndash; transform input into pond &ndash;&gt;-->
+<!--            <label for="postFiles">Upload files</label>-->
+<!--            <input type="file" class="filepond" id="postFiles" multiple>-->
+<!--            &lt;!&ndash; Load FilePond library and turn all file input elements into ponds &ndash;&gt;-->
+<!--            <script src="https://unpkg.com/filepond/dist/filepond.js"></script>-->
+<!--            <script>-->
+<!--              FilePond.parse(document.body);-->
+<!--            </script>-->
+
+<!--            &lt;!&ndash; keep in case filepond oofs &ndash;&gt;-->
+<!--            &lt;!&ndash; <div class="input-group">-->
+<!--              <div class="custom-file">-->
+<!--                <label for="postFiles">Files</label>-->
+<!--                <input type="file" class="custom-file-input" id="postFile" multiple>-->
+<!--                <label class="custom-file-label" for="postFile">Choose file</label>-->
+<!--              </div>-->
+<!--            </div> &ndash;&gt;-->
+<!--          </div>-->
+        </div>
+        <button type="button" class="btn btn-secondary post-btn-xl mx-auto d-block" id="entry-0">Post</button>
+      </div>
+    </div>
+    <!--For Production-->
+    <!--<script src="/__/firebase/7.18.0/firebase-app.js"></script>-->
+    <!--<script src="/__/firebase/7.18.0/firebase-auth.js"></script>-->
+    <!--<script src="/__/firebase/7.18.0/firebase-database.js"></script>-->
+    <!--<script src="/__/firebase/7.18.0/firebase-firestore.js"></script>-->
+    <!--<script src="/__/firebase/init.js"></script>-->
+    <!--For Production-->
+
+    <!--For Development Only-->
+    <script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-firestore.js"></script>
+    <script>
+      const firebaseConfig = {
+        "projectId": "temasek-jc",
+        "databaseURL": "https://temasek-jc.firebaseio.com",
+        "storageBucket": "temasek-jc.appspot.com",
+        "locationId": "us-central",
+        "apiKey": "AIzaSyBXmjJYfRwK-639vtGgA5ZK7AlEM7reJ9A",
+        "authDomain": "temasek-jc.firebaseapp.com",
+        "messagingSenderId": "1083456622235"
+      };
+      firebase.initializeApp(firebaseConfig);
+      const fireUser = new Promise((resolve, reject) => {
+        firebase.auth().onAuthStateChanged(user => {
+          if (user) resolve(user);
+        })
+      });
+    </script>
+    <script src="/authentication.js"></script>
+    <!--For Development Only-->
+
+    <script>
+      document.querySelector('body').style.display = 'none';
+      firebase.auth().onAuthStateChanged(async user => {
+        if (user && (await user.getIdTokenResult()).claims.accessLevel > 0) {
+          document.querySelector('body').style.display = 'block';
+        } else {
+          location.href = '/posts';
+        }
+      });
+      let isPostUploading = false;
+      $(document).ready(function(){
+        $("button").click(function(){
+          $(this).toggleClass("btn-secondary");
+          $(this).toggleClass("btn-success");
+          let title = document.getElementById('postTitle').value;
+          let body = document.getElementById('postContent').value;
+          createPost({title, body}).then(value => {
+            if (!value.success) {
+              alert(value.errorMessage);
+            } else {
+              location.replace('/posts');
+            }
+          })
+        });
+      });
+      /**
+       * Creates a post
+       * @param title: string
+       * @param body: string
+       * @param files: array of file links
+       */
+      async function createPost({title, body}) {
+        if (isPostUploading) return;
+        let errorMessage = ""
+        if (title.trim().length < 5) {
+          errorMessage += "Insert a longer title.";
+        }
+        if (body.trim().length < 5) {
+          errorMessage += "Insert a longer content.";
+        }
+        if (errorMessage.length > 0) {
+          return {success: false, errorMessage}
+        }
+        const uid = (await fireUser).uid;
+        const author = (await fireUser).displayName;
+        isPostUploading = true;
+        // return await firebase.firestore().collection('posts').doc().set({title, body, files, uid, author, created: firebase.firestore.FieldValue.serverTimestamp()})
+        await firebase.firestore().collection('posts').doc().set({title, body, uid, author, created: firebase.firestore.FieldValue.serverTimestamp()});
+        return {success: true}
+      }
+    </script>
+
+  </body>
+</html>

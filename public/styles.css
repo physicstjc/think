@@ -1,0 +1,176 @@
+:root {
+  --accent-red: #F3264D;
+  --accent-blue: #2FD5D4;
+  --background: #181818;
+  --background-card: #3c3f41;
+  --background-comment: #212325;
+  --text-color: rgba(240, 240, 240, 1);
+  --icon-color: black;
+}
+
+html, body {
+  color: var(--text-color);
+  background: var(--background);
+}
+
+a {
+  color: var(--accent-blue);
+}
+
+a:active, a:focus, a:hover {
+  color: #1Fb5b4;
+}
+header {
+  padding: 20px 20px;
+  width: 100%;
+  /*background: #2d2a2d;*/
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.vote-grid-btn {
+  margin-right: 10px;
+}
+
+.img-container {
+  text-align: center;
+  padding: 10px;
+  float: right;
+  width: 190px;
+  height: 190px;
+  margin: auto;
+}
+.text__accent-red {
+  color: var(--accent-red);
+}
+.text__accent-blue {
+  color: var(--accent-blue);
+}
+.post-img {
+  width:100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+@media only screen and (max-width: 950px) {
+  .img-container {
+    width: 100%;
+    padding: 0;
+    float: none;
+    height: 190px;
+    margin: 0;
+  }
+
+  .post-img {
+    border-radius: 4px 4px 0 0;
+  }
+}
+
+.card {
+  background: var(--background-card);
+}
+
+.card.post {
+  width: 90vw;
+  margin: 20px 5vw;
+}
+
+.list-group-item {
+  background: var(--background-comment);
+}
+
+.text__user {
+  color: var(--accent-red);
+}
+
+.vid {
+  margin-top: 30px;
+  margin-bottom: 35px;
+}
+
+.toptitle{
+  margin-top: 20px;
+  margin-bottom: 50px;
+  padding-left: 40px;
+  padding-right: 40px;
+  font-size: 60px;
+}
+
+.btn-xl{
+  padding: 10px 30px;
+  font-size: 25px;
+  border-radius: 10px;
+}
+
+.vote-grid-btn{
+  font-size: 15px;
+  border-radius: 10px;
+  background-color: #353535;
+  border-color: #353535;
+}
+
+.jumbo-bg {
+  background: var(--background);
+}
+
+.post-btn-xl{
+  margin-top: 50px;
+  padding: 10px 30px;
+  font-size: 25px;
+  border-radius: 10px;
+}
+
+.navbar {
+    margin-bottom: 0px;
+}
+
+.mdl-shadow--2dp {
+  box-shadow: none!important;
+}
+
+button.material-icons.activated, button.material-icons.md-light.activated, button.material-icons.md-dark.activated {
+  color: var(--accent-blue);
+}
+button.material-icons:active, button.material-icons.md-light:active, button.material-icons.md-dark:active {
+  color: var(--accent-blue);
+}
+button.material-icons.activated:active, button.material-icons.md-light.activated:active, button.material-icons.md-dark.activated:active {
+  color: var(--icon-color);
+}
+
+@media(hover: hover) and (pointer: fine)  {
+  button.material-icons.activated:hover, button.material-icons.md-light.activated:hover, button.material-icons.md-dark.activated:hover {
+    color: var(--icon-color);
+  }
+  button.material-icons:hover, button.material-icons.md-light:hover, button.material-icons.md-dark:hover {
+    color: var(--accent-blue);
+  }
+}
+
+/* Rules for sizing the icon. */
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-32 { font-size: 32px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }
+
+/* Rules for using icons as black on a light background. */
+.material-icons.md-dark { color: rgba(0, 0, 0, 0.54); }
+.material-icons.md-dark.md-inactive { color: rgba(0, 0, 0, 0.26); }
+
+/* Rules for using icons as white on a dark background. */
+.material-icons.md-light { color: rgba(255, 255, 255, 1); --icon-color: rgba(255, 255, 255, 1); }
+.material-icons.md-light.md-inactive { color: rgba(255, 255, 255, 0.3);--icon-color: rgba(255, 255, 255, 0.3); }
+
+button.material-icons {
+  background: transparent;
+  border: none!important;
+  outline: none!important;
+}
+
+.text__school {
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  color: #ffffff90;
+}

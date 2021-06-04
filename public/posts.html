@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Round">
+<!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>-->
+    <script type="text/javascript" src="/bootstrap/js/bootstrap.js"></script>
+    <title>Discussion</title>
+</head>
+<body>
+    <button class="btn btn-outline-info" id="sign-out" style="position:fixed;right:0;margin-right:5vw;" onclick="firebase.auth().signOut()">Sign Out</button>
+    <h1 class="text-center toptitle">Discussion</h1>
+    <div id="list-view" style="display: none"></div>
+    <button type="button" id="upload-post" class="btn btn-primary" style="right:20px;bottom:20px;position:fixed;font-size:1.4rem;" onclick="location.replace('/upload')">Upload Post</button>
+    <div class="container" id="firebaseui-auth-container">
+        <div class="card mx-auto" style="width: 50%;">
+            <div class="card-header">
+                <h1 class="center">Login</h1>
+                <p></p>
+                <p>Dear Participant, please sign in with the email and password given to you.</p>
+            </div>
+            <div class="card-body">
+                <form class="form" id="login">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control form-control-lg rounded-0" name="email" id="email"
+                               required="">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control form-control-lg rounded-0" id="password" required="">
+                    </div>
+                    <div id="error-message" style="color: #dd2c00;"></div>
+                </form>
+            </div>
+            <div class="card-footer">
+                <button type="button" class="btn btn-secondary btn-success btn-xl mx-auto d-block" id="signIn">Sign in</button>
+            </div>
+        </div>
+    </div>
+    <ul id="template-comment" class="list-group list-group-flush">
+        <li class="list-group-item">
+            <div class="comment__body">
+                <i class="text__user">User:</i>
+                <span class="text__comment">Body</span>
+            </div>
+        </li>
+    </ul>
+    <div id="template-post" class="card post">
+        <div style="flex-direction: row;">
+            <div class="img-container">
+                <img class="post-img" src="" alt=""/>
+            </div>
+            <div class="card-body" style="width:70vw;float:left;text-align:left;">
+                <h6 class="card-title text__user">Posted by User</h6>
+                <h4 class="card-title text__title">Title</h4>
+                <p class="card-text text__body">Body</p>
+                <button class="material-icons material-icons-round md-32 md-light activated">thumb_up</button>
+                <button class="material-icons material-icons-round md-32 md-light" id="button-comment">comment</button>
+                <button class="material-icons material-icons-round md-32 md-light">share</button>
+            </div>
+        </div>
+        <div class="post__comments-section">
+            <!--Append Comments Here-->
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+                <div class="comment__body">
+                    <a class="view-more" href="/posts/id">View More</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <script defer id="jquery" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <!--For Production-->
+    <!--<script src="/__/firebase/7.18.0/firebase-app.js"></script>-->
+    <!--<script src="/__/firebase/7.18.0/firebase-auth.js"></script>-->
+    <!--<script src="/__/firebase/7.18.0/firebase-database.js"></script>-->
+    <!--<script src="/__/firebase/7.18.0/firebase-firestore.js"></script>-->
+    <!--<script src="/__/firebase/init.js"></script>-->
+    <!--For Production-->
+
+    <!--For Development Only-->
+    <script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-firestore.js"></script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+    <script>
+        const firebaseConfig = {
+            "projectId": "temasek-jc",
+            "databaseURL": "https://temasek-jc.firebaseio.com",
+            "storageBucket": "temasek-jc.appspot.com",
+            "locationId": "us-central",
+            "apiKey": "AIzaSyBXmjJYfRwK-639vtGgA5ZK7AlEM7reJ9A",
+            "authDomain": "temasek-jc.firebaseapp.com",
+            "messagingSenderId": "1083456622235"
+        };
+        firebase.initializeApp(firebaseConfig);
+        const fireUser = new Promise((resolve, reject) => {
+            firebase.auth().onAuthStateChanged(user => {
+                if (user) resolve(user);
+            })
+        });
+    </script>
+<!--    <script src="/authentication.js"></script>-->
+    <!--For Development Only-->
+
+    <script>
+        const template = document.getElementById('template-post');
+        const commentTemplate = document.getElementById('template-comment');
+        const listView = document.getElementById('list-view');
+        const authContainer = document.getElementById('firebaseui-auth-container');
+        const uploadButton = document.getElementById('upload-post');
+        // listView.removeChild(template)
+        template.remove();
+        commentTemplate.remove();
+
+        const emailInput = document.getElementById('email');
+        const passwordInput = document.getElementById('password');
+        const signInButton = document.getElementById('signIn');
+        const errorMessageText = document.getElementById('error-message');
+        const signOutButton = document.getElementById('sign-out');
+
+        // Authentication
+        emailInput.addEventListener("keyup", enterSubmitListener);
+        passwordInput.addEventListener("keyup", enterSubmitListener);
+        function enterSubmitListener(event) {
+            if (event.keyCode === 13 || event.which === 13) {
+                event.preventDefault();
+                signInButton.click();
+            }
+        }
+        signInButton.addEventListener('click', ev => {
+            const email = emailInput.value;
+            const password = passwordInput.value;
+            firebase.auth().signInWithEmailAndPassword(email, password).then(async user => {
+                if (user && (await (await fireUser).getIdTokenResult()).claims.accessLevel > 0) {
+                    errorMessageText.textContent = "";
+                    document.getElementById('login').reset();
+                } else {
+                    errorMessageText.textContent = "You do not have permission to view this page";
+                }
+            }).catch(error => {
+                errorMessageText.textContent = error.message;
+            });
+        })
+        // end: Authentication
+
+        function commentListItem(id, comment) {
+            const copy = commentTemplate.cloneNode(true);
+            copy.id = id;
+            copy.querySelector('.text__user').textContent = comment.author;
+            copy.querySelector('.text__comment').textContent = comment.body;
+            return copy
+        }
+
+        function postCard(id, post) {
+            const copy = template.cloneNode(true);
+            copy.id = id;
+            const cardBody = copy.querySelector('.card-body');
+            cardBody.querySelector('.text__title').textContent = post.title;
+            cardBody.querySelector('.text__body').textContent = post.body;
+            cardBody.querySelector('.text__user').textContent = post.author;
+            const cardCommentsSection = copy.querySelector(".post__comments-section");
+            // post.comments = {dlksaflk: {author: 'Vin', body: 'Test1'},jsdalfd: {author: 'Vincent', body: 'Test2'},}
+            for (const commentId in post.comments) {
+                cardCommentsSection.append(commentListItem(commentId, post.comments[commentId]));
+            }
+            copy.querySelector('.view-more').href = `/posts/${id}`
+            copy.querySelector('.post-img').src = `https://picsum.photos/seed/${id+Math.random()}/1000/300`
+
+            cardBody.querySelector('#button-comment').addEventListener("click", evt => {
+                location.href = `/posts/${id}`
+            })
+            return copy
+        }
+
+        firebase.auth().onAuthStateChanged(async user => {
+            if (user && (await user.getIdTokenResult()).claims.accessLevel > 0) {
+                listView.style.display = 'block'
+                authContainer.style.display = 'none'
+                signOutButton.style.display = 'block'
+                uploadButton.style.display = 'block'
+                pagination({
+                    collectionPath: 'posts',
+                    callback: (id, post) => postCard(id, post),
+                    window: window,
+                    document: window.document,
+                    listView: listView,
+                    onError: (e) => console.log(e),
+                    // loadingImg: document.getElementById('loading-img'),
+                    // errorContainer: errorContainer,
+                    // filter: filter
+                });
+            } else {
+                listView.style.display = 'none'
+                authContainer.style.display = 'block'
+                signOutButton.style.display = 'none'
+                uploadButton.style.display = 'none'
+            }
+        });
+        function pagination({
+                                collectionPath, callback, listView, loadingSpinner, onError,
+                                filter = (collection) => collection.orderBy('created', "desc").limit(7), bottomOffset = 900
+                            }) {
+
+            let lastDocument;
+            let isLoadingList = false
+            let endOfList = false
+            let listEmpty = true
+
+            async function loadNext() {
+                let nextQuery = filter(firebase.firestore().collection(collectionPath));
+                if (lastDocument) {
+                    nextQuery = nextQuery.startAfter(lastDocument);
+                }
+                try {
+                    const querySnapshot = await nextQuery.get();
+                    if (querySnapshot.docs.length === 0) {
+                        endOfList = true
+                        loadingSpinner?.remove();
+                        document.getElementById('');
+                        onError();
+                        // if (errorDiv && listEmpty) errorDiv.style.display = 'block'
+                    } else {
+                        listEmpty = false
+                        lastDocument = querySnapshot.docs[querySnapshot.docs.length - 1]
+                        querySnapshot.docs.forEach(result => listView.append(callback(result.id, result.data())))
+                        isLoadingList = false
+                        loadMoreIfBottom()
+                    }
+                } catch (e) {
+                    onError(e);
+                }
+            }
+
+            // if (errorDiv) errorDiv.style.display = 'none'
+
+            loadMoreIfBottom()
+            // When scrolled to bottom, check if need to load more
+            window.addEventListener("scroll", ev => {
+                loadMoreIfBottom();
+            })
+
+            // If document is at bottom, load more
+            function loadMoreIfBottom() {
+                // console.log(document)
+                // document.getElementById('jquery').addEventListener('load', ev => {
+                if (!isLoadingList && $(window).scrollTop() > $(document).height() - $(window).height() - bottomOffset) {
+                    isLoadingList = true
+                    if (!endOfList) {
+                        loadNext()
+                    }
+                }
+                // })
+            }
+        }
+    </script>
+</body>
+</html>

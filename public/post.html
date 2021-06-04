@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Round">
+    <title>Post</title>
+    <style>
+        .card.comment, .card {
+            width: 95%;
+            margin: 20px 2.5%;
+            /*background: var(--background-comment);*/
+        }
+
+        .post {
+            width: 100%;
+            margin: 0 0 10px;
+        }
+
+        .post-col {
+            background: var(--background-comment) !important;
+            width: 90vw;
+            margin: 20px 5vw 10rem;
+        }
+
+        .header--comment-section {
+            width: 95%;
+            margin: 5px 2.5%;
+            color: var(--accent-blue);
+        }
+
+        .error--comment-section, #loading {
+            width: 95%;
+            margin: 5px 2.5% 20px;
+        }
+        .error--comment-section {
+            color: var(--accent-red);
+        }
+    </style>
+</head>
+<body>
+<!--    <h1 class="text-center toptitle">Discussion</h1>-->
+<div class="container" id="firebaseui-auth-container">
+    <div class="card mx-auto" style="width: 50%;">
+        <div class="card-header">
+            <h1 class="center">Login</h1>
+            <p></p>
+            <p>Dear Participant, please sign in with the email and password given to you.</p>
+        </div>
+        <div class="card-body">
+            <form class="form" id="login">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control form-control-lg rounded-0" name="email" id="email"
+                           required="">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control form-control-lg rounded-0" id="password" required="">
+                </div>
+                <div id="error-message" style="color: #dd2c00;"></div>
+            </form>
+        </div>
+        <div class="card-footer">
+            <button type="button" class="btn btn-secondary btn-success btn-xl mx-auto d-block" id="signIn">Sign in</button>
+        </div>
+    </div>
+</div>
+<div class="card post-col">
+    <div id="post" class="post">
+        <div style="flex-direction: row;">
+            <div class="img-container">
+                <img class="post-img" src="" alt=""/>
+            </div>
+            <div class="card-body" style="width:70vw;float:left;text-align:left;">
+                <h6 class="card-title text__user">Posted by User</h6>
+                <h4 class="card-title text__title">Title</h4>
+                <p class="card-text text__body">Body</p>
+                <button class="material-icons material-icons-round md-32 md-light activated">thumb_up</button>
+                <button class="material-icons material-icons-round md-32 md-light">comment</button>
+                <button class="material-icons material-icons-round md-32 md-light">share</button>
+            </div>
+        </div>
+        <!--        <ul class="list-group list-group-flush">-->
+        <!--            <li class="list-group-item">-->
+        <!--                <div class="comment__body">-->
+        <!--                    <i class="text__user">User:</i>-->
+        <!--                    <span class="text__comment">Body</span>-->
+        <!--                </div>-->
+        <!--            </li>-->
+        <!--        </ul>-->
+        <!--        <ul class="list-group list-group-flush">-->
+        <!--            <li class="list-group-item">-->
+        <!--                <div class="comment__body">-->
+        <!--                    <i class="text__user">User:</i>-->
+        <!--                    <span class="text__comment">Body</span>-->
+        <!--                </div>-->
+        <!--            </li>-->
+        <!--        </ul>-->
+        <!--        <ul class="list-group list-group-flush">-->
+        <!--            <li class="list-group-item">-->
+        <!--                <div class="comment__body">-->
+        <!--                    <a href="/posts/id">View More</a>-->
+        <!--                </div>-->
+        <!--            </li>-->
+        <!--        </ul>-->
+    </div>
+    <h5 class="header--comment-section">Comments</h5>
+    <h5 class="error--comment-section">No Comments Found</h5>
+    <div id="template-comment" class="card comment">
+        <div style="flex-direction: row;">
+            <div class="img-container">
+                <img class="post-img" src="" alt=""/>
+            </div>
+            <div class="card-body" style="width:70vw;float:left;text-align:left;">
+                <h6 class="card-title text__user">Comment by User</h6>
+                <h4 class="card-title text__title">Title</h4>
+                <p class="card-text text__body">Body</p>
+                <button class="material-icons material-icons-round md-32 md-light activated">thumb_up</button>
+                <button class="material-icons material-icons-round md-32 md-light">comment</button>
+                <button class="material-icons material-icons-round md-32 md-light">share</button>
+            </div>
+        </div>
+        <!--        <ul class="list-group list-group-flush">-->
+        <!--            <li class="list-group-item">-->
+        <!--                <div class="comment__body">-->
+        <!--                    <i class="text__user">User:</i>-->
+        <!--                    <span class="text__comment">Body</span>-->
+        <!--                </div>-->
+        <!--            </li>-->
+        <!--        </ul>-->
+        <!--        <ul class="list-group list-group-flush">-->
+        <!--            <li class="list-group-item">-->
+        <!--                <div class="comment__body">-->
+        <!--                    <i class="text__user">User:</i>-->
+        <!--                    <span class="text__comment">Body</span>-->
+        <!--                </div>-->
+        <!--            </li>-->
+        <!--        </ul>-->
+        <!--        <ul class="list-group list-group-flush">-->
+        <!--            <li class="list-group-item">-->
+        <!--                <div class="comment__body">-->
+        <!--                    <a href="/posts/id">View More</a>-->
+        <!--                </div>-->
+        <!--            </li>-->
+        <!--        </ul>-->
+    </div>
+    <div id="list-view"></div>
+    <h5 id="loading">Loading...</h5>
+</div>
+<div class="form-group" style="position:fixed;bottom: 0;width: 100%;padding: 10px 20px;background-color:var(--background-card);margin-bottom: 0;">
+    <div style="display:flex;flex-direction: row;justify-content: space-between;">
+    <label for="new-comment" style="font-weight: bold;">New Comment</label>
+    <button type="button" id="upload-comment">Send
+    <span class="material-icons" style="margin-left: auto;">add_comment</span>
+    </button>
+    </div>
+    <textarea class="form-control" id="new-comment" rows="3"></textarea>
+    <!--        <input type="text" class="form-control" id="new-comment" placeholder="Enter Title">-->
+</div>
+<script id="jquery" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<!--For Production-->
+<!--<script src="/__/firebase/7.18.0/firebase-app.js"></script>-->
+<!--<script src="/__/firebase/7.18.0/firebase-auth.js"></script>-->
+<!--<script src="/__/firebase/7.18.0/firebase-database.js"></script>-->
+<!--<script src="/__/firebase/7.18.0/firebase-firestore.js"></script>-->
+<!--<script src="/__/firebase/init.js"></script>-->
+<!--For Production-->
+
+<!--For Development Only-->
+<script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-firestore.js"></script>
+<script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+<link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css"/>
+<script>
+    const firebaseConfig = {
+        "projectId": "temasek-jc",
+        "databaseURL": "https://temasek-jc.firebaseio.com",
+        "storageBucket": "temasek-jc.appspot.com",
+        "locationId": "us-central",
+        "apiKey": "AIzaSyBXmjJYfRwK-639vtGgA5ZK7AlEM7reJ9A",
+        "authDomain": "temasek-jc.firebaseapp.com",
+        "messagingSenderId": "1083456622235"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const fireUser = new Promise((resolve, reject) => {
+        firebase.auth().onAuthStateChanged(user => {
+            if (user) resolve(user);
+        })
+    });
+</script>
+<!--For Development Only-->
+
+<script>
+    const postId = location.pathname.split('/')[2];
+    // let comment = document.querySelector(".comment__body")
+    // comment.querySelector('.text__user').textContent = "Author:"
+    // comment.querySelector('.text__comment').textContent = "Comment"
+    //
+    const template = document.getElementById('template-comment');
+    const listView = document.getElementById('list-view');
+    const postCol = document.querySelector('.post-col');
+    const authContainer = document.getElementById('firebaseui-auth-container');
+    template.remove();
+
+    const emailInput = document.getElementById('email');
+    const passwordInput = document.getElementById('password');
+    const signInButton = document.getElementById('signIn');
+    const errorMessageText = document.getElementById('error-message');
+    const signOutButton = document.getElementById('sign-out');
+
+    // Authentication
+    emailInput.addEventListener("keyup", enterSubmitListener);
+    passwordInput.addEventListener("keyup", enterSubmitListener);
+    function enterSubmitListener(event) {
+        if (event.keyCode === 13 || event.which === 13) {
+            event.preventDefault();
+            signInButton.click();
+        }
+    }
+    signInButton.addEventListener('click', ev => {
+        const email = emailInput.value;
+        const password = passwordInput.value;
+        firebase.auth().signInWithEmailAndPassword(email, password).then(async user => {
+            if (user && (await (await fireUser).getIdTokenResult()).claims.accessLevel > 0) {
+                errorMessageText.textContent = "";
+                document.getElementById('login').reset();
+            } else {
+                errorMessageText.textContent = "You do not have permission to view this page";
+            }
+        }).catch(error => {
+            errorMessageText.textContent = error.message;
+        });
+    })
+    // end: Authentication
+
+    function postCard(id, post) {
+        const postElement = document.getElementById('post');
+        postElement.id = id;
+        const cardBody = postElement.querySelector('.card-body');
+        cardBody.querySelector('.text__title').textContent = post.title;
+        cardBody.querySelector('.text__body').textContent = post.body;
+        cardBody.querySelector('.text__user').textContent = post.author;
+        postElement.querySelector('.post-img').src = `https://picsum.photos/seed/${id+Math.random()}/1000/300`;
+    }
+    const postRef = firebase.firestore().collection('posts').doc(postId);
+    postRef.get().then(postDoc => {
+        postCard(postId, postDoc.data());
+    })
+    function commentCard(id, comment) {
+        const copy = template.cloneNode(true);
+        copy.id = id;
+        const cardBody = copy.querySelector('.card-body');
+        cardBody.querySelector('.text__title').textContent = comment.title;
+        cardBody.querySelector('.text__body').textContent = comment.body;
+        cardBody.querySelector('.text__user').textContent = comment.author;
+        copy.querySelector('.post-img').src = `https://picsum.photos/seed/${id+Math.random()}/1000/300`;
+        console.log(comment);
+        return copy;
+    }
+    //
+    const loadingSpinner = document.querySelector('#loading');
+    const errorContainer = document.querySelector('.error--comment-section');
+    const headerCommentSection = document.querySelector('.header--comment-section');
+    errorContainer.style.display = 'none';
+
+    async function createComment(body, postId) {
+        let errorMessage = "";
+        if (body.trim().length < 5) {
+            errorMessage += "Insert a longer content.";
+        }
+        if (errorMessage.length > 0) {
+            return {success: false, errorMessage};
+        }
+        const uid = firebase.auth().currentUser.uid;
+        const author = (await fireUser).displayName;
+        await firebase.firestore().collection('posts').doc(postId).collection('comments').doc().set({body, uid, author, created: firebase.firestore.FieldValue.serverTimestamp()})
+        return {success: true};
+    }
+
+    // Authentication check, then paginate
+    firebase.auth().onAuthStateChanged(async user => {
+        // todo: check if user has privileges
+        if (user && (await user.getIdTokenResult()).claims.accessLevel > 0) {
+            postCol.style.opacity = '100%'
+            authContainer.style.display = 'none'
+            // signOutButton.style.display = 'block'
+            pagination({
+                collectionPath: `posts/${postId}/comments`,
+                callback: (id, post) => commentCard(id, post),
+                window: window,
+                document: document,
+                listView: listView,
+                // loadingImg: document.getElementById('loading-img'),
+                loadingSpinner: loadingSpinner,
+                onError: e => {
+                    errorContainer.style.display = 'block';
+                    errorContainer.textContent = e ? e.message : 'No Comments';
+                    headerCommentSection.style.display = 'none';
+                },
+                // filter: filter
+            });
+            const newCommentInput = document.getElementById('new-comment');
+            const uploadButton = document.getElementById('upload-comment');
+            uploadButton.addEventListener('click', evt => {
+                const body = newCommentInput.value;
+                console.log(body);
+                uploadButton.active = false;
+                createComment(body, postId).then(value => {
+                    if (!value.success) {
+                        alert(value.errorMessage);
+                        uploadButton.active = true;
+                    } else {
+                        newCommentInput.value = '';
+                        console.log(value);
+                        location.replace(location.href);
+                    }
+                });
+            })
+        } else {
+            postCol.style.opacity = '0'
+            authContainer.style.display = 'block'
+            // signOutButton.style.display = 'none'
+        }
+    })
+
+    function pagination({
+                            collectionPath, callback, listView, loadingSpinner, onError,
+                            filter = (collection) => collection.orderBy('created', "desc").limit(7), bottomOffset = 900
+                        }) {
+
+        let lastDocument;
+        let isLoadingList = false
+        let endOfList = false
+        let listEmpty = true
+
+        async function loadNext() {
+            let nextQuery = filter(firebase.firestore().collection(collectionPath));
+            if (lastDocument) {
+                nextQuery = nextQuery.startAfter(lastDocument);
+            }
+            try {
+                const querySnapshot = await nextQuery.get();
+                if (querySnapshot.docs.length === 0) {
+                    endOfList = true
+                    loadingSpinner?.remove();
+                    document.getElementById('');
+                    onError();
+                    // if (errorDiv && listEmpty) errorDiv.style.display = 'block'
+                } else {
+                    listEmpty = false
+                    lastDocument = querySnapshot.docs[querySnapshot.docs.length - 1]
+                    querySnapshot.docs.forEach(result => listView.append(callback(result.id, result.data())))
+                    isLoadingList = false
+                    loadMoreIfBottom()
+                }
+            } catch (e) {
+                onError(e);
+            }
+        }
+
+        // if (errorDiv) errorDiv.style.display = 'none'
+
+        loadMoreIfBottom()
+        // When scrolled to bottom, check if need to load more
+        window.addEventListener("scroll", ev => {
+            loadMoreIfBottom();
+        })
+
+        // If document is at bottom, load more
+        function loadMoreIfBottom() {
+            if (!isLoadingList && $(window).scrollTop() > $(document).height() - $(window).height() - bottomOffset) {
+                isLoadingList = true
+                if (!endOfList) {
+                    loadNext()
+                }
+            }
+            // document.getElementById('jquery').addEventListener('load', ev => {
+            // })
+        }
+    }
+</script>
+</body>
+</html>

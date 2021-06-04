@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<head><!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <link rel="stylesheet" href="/styles.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script type="text/javascript" src="/bootstrap/js/bootstrap.js"></script>
+  <title>eTHINK Challenge Finalists</title>
+  <link rel='icon' href='/favicon.ico' type='image/x-icon'/>
+  <link rel="shortcut icon" type="image/jpeg" href="/icons/1080/girl-winking.jpeg"/>
+  <meta name='description' content='Voting page description'/>
+  <meta property='og:image' content="/images/icon.png"/>
+  <style> @media only screen {
+    .dynamic-width-card {
+      width: 100% !important;
+    }
+  }
+
+  @media only screen and (min-width: 768px) {
+    .dynamic-width-card {
+      width: 50% !important;
+    }
+  }
+
+  @media only screen and (min-width: 900px) {
+    .dynamic-width-card {
+      width: 33.3% !important;
+    }
+  }
+
+  .vid {
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+
+  div.video-details {
+    padding-top: 4px;
+    padding-bottom: 4px;
+  }</style>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" id="firebaseui-auth-container"></div>
+  </div>
+</div>
+<div style="height: 20px"></div>
+<a style="width:100%;padding-left:40px;" href="https://tinyurl.com/ethinkchallenge">tinyurl.com/ethinkchallenge</a>
+<h1 class="text-center toptitle">eTHINK Challenge Finalists</h1>
+<!--Voting Ended Text-->
+<h2 class="text-center">Voting Ended</h2>
+<div class="row video-list" style="margin-left: 10px; margin-right: 10px;">
+  <div class="dynamic-width-card">
+    <div class="card-transparent">
+      <div class="card-body">
+        <div class="embed-responsive embed-responsive-16by9 vid">
+          <iframe class="embed-responsive-item" src="//www.youtube.com/embed/CHAYMP8hf4E" allowfullscreen=""></iframe>
+        </div>
+        <div class="video-details"><h6><span class="text__school">AI TONG SCHOOL</span><br><span
+                class="font-weight-bold text__participant text__accent-blue">Clement Chai</span></h6><h5
+                class="video-title">e(lectromagnet-powered) Train is approaching- how does it work?</h5></div>
+        <button type="button" class="btn btn-secondary vote-grid-btn" id="entry-0">Upvote!</button>
+        <span id="vote-count-entry-0">0</span><span> votes</span>
+        <button type="button" class="btn btn-secondary share-btn material-icons material-icons-round">share</button>
+      </div>
+    </div>
+  </div>
+  <div class="dynamic-width-card">
+    <div class="card-transparent">
+      <div class="card-body">
+        <div class="embed-responsive embed-responsive-16by9 vid">
+          <iframe class="embed-responsive-item" src="//www.youtube.com/embed/agJRH0-AUNs" allowfullscreen=""></iframe>
+        </div>
+        <div class="video-details"><h6><span class="text__school">AI TONG SCHOOL</span><br><span
+                class="font-weight-bold text__participant text__accent-blue">Zhang ZIyao</span></h6><h5
+                class="video-title">E-Think Submission (Electromagnetism)</h5></div>
+        <button type="button" class="btn btn-secondary vote-grid-btn" id="entry-1">Upvote!</button>
+        <span id="vote-count-entry-1">0</span><span> votes</span>
+        <button type="button" class="btn btn-secondary share-btn material-icons material-icons-round">share</button>
+      </div>
+    </div>
+  </div>
+  <div class="dynamic-width-card">
+    <div class="card-transparent">
+      <div class="card-body">
+        <div class="embed-responsive embed-responsive-16by9 vid">
+          <iframe class="embed-responsive-item" src="//www.youtube.com/embed/1wC6EdtgXmA" allowfullscreen=""></iframe>
+        </div>
+        <div class="video-details"><h6><span class="text__school">ANGSANA PRIMARY SCHOOL</span><br><span
+                class="font-weight-bold text__participant text__accent-blue">Ming Peach</span></h6><h5
+                class="video-title">Magnet Magic</h5></div>
+        <button type="button" class="btn btn-secondary vote-grid-btn" id="entry-2">Upvote!</button>
+        <span id="vote-count-entry-2">0</span><span> votes</span>
+        <button type="button" class="btn btn-secondary share-btn material-icons material-icons-round">share</button>
+      </div>
+    </div>
+  </div>
+  <div class="dynamic-width-card">
+    <div class="card-transparent">
+      <div class="card-body">
+        <div class="embed-responsive embed-responsive-16by9 vid">
+          <iframe class="embed-responsive-item" src="//www.youtube.com/embed/H8wCe9LBqek" allowfullscreen=""></iframe>
+        </div>
+        <div class="video-details"><h6><span class="text__school">ANGSANA PRIMARY SCHOOL</span><br><span
+                class="font-weight-bold text__participant text__accent-blue">Aayan Gupta</span></h6><h5
+                class="video-title">Sound To Electricity Converter</h5></div>
+        <button type="button" class="btn btn-secondary vote-grid-btn" id="entry-3">Upvote!</button>
+        <span id="vote-count-entry-3">0</span><span> votes</span>
+        <button type="button" class="btn btn-secondary share-btn material-icons material-icons-round">share</button>
+      </div>
+    </div>
+  </div>
+  <div class="dynamic-width-card">
+    <div class="card-transparent">
+      <div class="card-body">
+        <div class="embed-responsive embed-responsive-16by9 vid">
+          <iframe class="embed-responsive-item" src="//www.youtube.com/embed/xnpB6ZNGF08" allowfullscreen=""></iframe>
+        </div>
+        <div class="video-details"><h6><span class="text__school">BEDOK GREEN PRIMARY SCHOOL</span><br><span
+                class="font-weight-bold text__participant text__accent-blue">Kabir Srivastav</span></h6><h5
+                class="video-title">Electromagnetic pin-collecter</h5></div>
+        <button type="button" class="btn btn-secondary vote-grid-btn" id="entry-4">Upvote!</button>
+        <span id="vote-count-entry-4">0</span><span> votes</span>
+        <button type="button" class="btn btn-secondary share-btn material-icons material-icons-round">share</button>
+      </div>
+    </div>
+  </div>
+  <div class="dynamic-width-card">
+    <div class="card-transparent">
+      <div class="card-body">
+        <div class="embed-responsive embed-responsive-16by9 vid">
+          <iframe class="embed-responsive-item" src="//www.youtube.com/embed/rVHIwv91r6s" allowfullscreen=""></iframe>
+        </div>
+        <div class="video-details"><h6><span class="text__school">BEDOK GREEN PRIMARY SCHOOL</span><br><span
+                class="font-weight-bold text__participant text__accent-blue">GOH EINZY</span></h6><h5
+                class="video-title">ELECTROMAGNETIC CARS</h5></div>
+        <button type="button" class="btn btn-secondary vote-grid-btn" id="entry-5">Upvote!</button>
+        <span id="vote-count-entry-5">0</span><span> votes</span>
+        <button type="button" class="btn btn-secondary share-btn material-icons material-icons-round">share</button>
+      </div>
+    </div>
+  </div>
+  <div class="dynamic-width-card">
+    <div class="card-transparent">
+      <div class="card-body">
+        <div class="embed-responsive embed-responsive-16by9 vid">
+          <iframe class="embed-responsive-item" src="//www.youtube.com/embed/yg6bGYnygaY" allowfullscreen=""></iframe>
+        </div>
+        <div class="video-details"><h6><span class="text__school">CANTONMENT PRIMARY SCHOOL</span><br><span
+                class="font-weight-bold text__participant text__accent-blue">Loh Wei Zheng Alexander</span></h6><h5
+                class="video-title">How to build an electromagnet without using a compass</h5></div>
+        <button type="button" class="btn btn-secondary vote-grid-btn" id="entry-6">Upvote!</button>
+        <span id="vote-count-entry-6">0</span><span> votes</span>
+        <button type="button" class="btn btn-secondary share-btn material-icons material-icons-round">share</button>
+      </div>
+    </div>
+  </div>
+  <div class="dynamic-width-card">
+    <div class="card-transparent">
+      <div class="card-body">
+        <div class="embed-responsive embed-responsive-16by9 vid">
+          <iframe class="embed-responsive-item" src="//www.youtube.com/embed/Z43joCSKcVc" allowfullscreen=""></iframe>
+        </div>
+        <div class="video-details"><h6><span class="text__school">CATHOLIC HIGH SCHOOL</span><br><span
+                class="font-weight-bold text__participant text__accent-blue">Tew Gun Rui</span></h6><h5
+                class="video-title">The Door of Horror: No lock to fasten and no key to openÖ Watch how I can lock you
+          in my haunted house using only electromagnetism.</h5></div>
+        <button type="button" class="btn btn-secondary vote-grid-btn" id="entry-7">Upvote!</button>
+        <span id="vote-count-entry-7">0</span><span> votes</span>
+        <button type="button" class="btn btn-secondary share-btn material-icons material-icons-round">share</button>
+      </div>
+    </div>
+  </div>
+  <div class="dynamic-width-card">
+    <div class="card-transparent">
+      <div class="card-body">
+        <div class="embed-responsive embed-responsive-16by9 vid">
+          <iframe class="embed-responsive-item" src="//www.youtube.com/embed/e3Aoi3t4_T8" allowfullscreen=""></iframe>
+        </div>
+        <div class="video-details"><h6><span class="text__school">CATHOLIC HIGH SCHOOL</span><br><span
+                class="font-weight-bold text__participant text__accent-blue">Kevin Wong</span></h6><h5
+                class="video-title">How does an electromagnetic work?</h5></div>
+        <button type="button" class="btn btn-secondary vote-grid-btn" id="entry-8">Upvote!</button>
+        <span id="vote-count-entry-8">0</span><span> votes</span>
+        <button type="button" class="btn btn-secondary share-btn material-icons material-icons-round">share</button>
+      </div>
+    </div>
+  </div>
+  <div class="dynamic-width-card">
+    <div class="card-transparent">
+      <div class="card-body">
+        <div class="embed-responsive embed-responsive-16by9 vid">
+          <iframe class="embed-responsive-item" src="//www.youtube.com/embed/XgPihXIKONU" allowfullscreen=""></iframe>
+        </div>
+        <div class="video-details"><h6><span class="text__school">CHONGZHENG PRIMARY SCHOOL</span><br><span
+                class="font-weight-bold text__participant text__accent-blue">TAN RUI XUAN RIONA (CHEN RUIXUAN)</span>
+        </h6><h5 class="video-title">Magnee Launcher - A pet 'fetch' game toy that applies the concept of
+          electromagnetism!</h5></div>
+        <button type="button" class="btn btn-secondary vote-grid-btn" id="entry-9">Upvote!</button>
+        <span id="vote-count-entry-9">0</span><span> votes</span>
+        <button type="button" class="btn btn-secondary share-btn material-icons material-icons-round">share</button>
+      </div>
+    </div>
+  </div>
+  <div class="dynamic-width-card">
+    <div class="card-transparent">
+      <div class="card-body">
+        <div class="embed-responsive embed-responsive-16by9 vid">
+          <iframe class="embed-responsive-item" src="//www.youtube.com/embed/llLukYn9KRM" allowfullscreen=""></iframe>
+        </div>
+        <div class="video-details"><h6><span class="text__school">CHONGZHENG PRIMARY SCHOOL</span><br><span
+                class="font-weight-bold text__participant text__accent-blue">Tan Ding Wen</span></h6><h5
+                class="video-title">Exploring Electromagnetism - Why some materials cannot become electromagnets?</h5>
+        </div>
+        <button type="button" class="btn btn-secondary vote-grid-btn" id="entry-10">Upvote!</button>
+        <span id="vote-count-entry-10">0</span><span> votes</span>
+        <button type="button" class="btn btn-secondary share-btn material-icons material-icons-round">share</button>
+      </div>
+    </div>
+  </div>
+  <div class="dynamic-width-card">
+    <div class="card-transparent">
+      <div class="card-body">
+        <div class="embed-responsive embed-responsive-16by9 vid">
+          <iframe class="embed-responsive-item" src="//www.youtube.com/embed/xEBYvuMt-4s" allowfullscreen=""></iframe>
+        </div>
+        <div class="video-details"><h6><span class="text__school">CHONGZHENG PRIMARY SCHOOL</span><br><span
+                class="font-weight-bold text__participant text__accent-blue">EDARA NEHA</span></h6><h5
+                class="video-title">A Simple Motor using electromagnetic force</h5></div>
+        <button type="button" class="btn btn-secondary vote-grid-btn" id="entry-11">Upvote!</button>
+        <span id="vote-count-entry-11">0</span><span> votes</span>
+        <button type="button" class="btn btn-secondary share-btn material-icons material-icons-round">share</button>
+      </div>
+    </div>
+  </div>
+  <div class="dynamic-width-card">
+    <div class="card-transparent">
+      <div class="card-body">
+        <div class="embed-responsive embed-responsive-16by9 vid">
+          <iframe class="embed-responsive-item" src="//www.youtube.com/embed/Y9ZssvuZ-0o" allowfullscreen=""></iframe>
+        </div>
+        <div class="video-details"><h6><span class="text__school">CHONGZHENG PRIMARY SCHOOL</span><br><span
+                class="font-weight-bold text__participant text__accent-blue">KWAN KENG HEI</span></h6><h5
+                class="video-title">Electrofying Movement!</h5></div>
+        <button type="button" class="btn btn-secondary vote-grid-btn" id="entry-12">Upvote!</button>
+        <span id="vote-count-entry-12">0</span><span> votes</span>
+        <button type="button" class="btn btn-secondary share-btn material-icons material-icons-round">share</button>
+      </div>
+    </div>
+  </div>
+  <div class="dynamic-width-card">
+    <div class="card-transparent">
+      <div class="card-body">
+        <div class="embed-responsive embed-responsive-16by9 vid">
+          <iframe class="embed-responsive-item" src="//www.youtube.com/embed/Cw-HTUPITK8" allowfullscreen=""></iframe>
+        </div>
+        <div class="video-details"><h6><span class="text__school">FRONTIER PRIMARY SCHOOL</span><br><span
+                class="font-weight-bold text__participant text__accent-blue">Jayden Lim Jun Yang</span></h6><h5
+                class="video-title">e-Think Challenge: Magnetic Door Lock</h5></div>
+        <button type="button" class="btn btn-secondary vote-grid-btn" id="entry-13">Upvote!</button>
+        <span id="vote-count-entry-13">0</span><span> votes</span>
+        <button type="button" class="btn btn-secondary share-btn material-icons material-icons-round">share</button>
+      </div>
+    </div>
+  </div>
+  <div class="dynamic-width-card">
+    <div class="card-transparent">
+      <div class="card-body">
+        <div class="embed-responsive embed-responsive-16by9 vid">
+          <iframe class="embed-responsive-item" src="//www.youtube.com/embed/uCQcpenUhiY" allowfullscreen=""></iframe>
+        </div>
+        <div class="video-details"><h6><span class="text__school">FRONTIER PRIMARY SCHOOL</span><br><span
+                class="font-weight-bold text__participant text__accent-blue">Leong Jeen Rui Andrique</span></h6><h5
+                class="video-title">Andrique Leong Frontier P5 E-Think Challenge - What is an Electromagnet?</h5></div>
+        <button type="button" class="btn btn-secondary vote-grid-btn" id="entry-14">Upvote!</button>
+        <span id="vote-count-entry-14">0</span><span> votes</span>
+        <button type="button" class="btn btn-secondary share-btn material-icons material-icons-round">share</button>
+      </div>
+    </div>
+  </div>
+  <div class="dynamic-width-card">
+    <div class="card-transparent">
+      <div class="card-body">
+        <div class="embed-responsive embed-responsive-16by9 vid">
+          <iframe class="embed-responsive-item" src="//www.youtube.com/embed/GNWQpOT44sk" allowfullscreen=""></iframe>
+        </div>
+        <div class="video-details"><h6><span class="text__school">GEYLANG METHODIST SCHOOL (PRIMARY)</span><br><span
+                class="font-weight-bold text__participant text__accent-blue">Tan Hui Qi Vera</span></h6><h5
+                class="video-title">In the video,I display a concept of using electromagnets in every day life-at the
+          recycling center. I gave a mini example of it through a mini experiment.</h5></div>
+        <button type="button" class="btn btn-secondary vote-grid-btn" id="entry-15">Upvote!</button>
+        <span id="vote-count-entry-15">0</span><span> votes</span>
+        <button type="button" class="btn btn-secondary share-btn material-icons material-icons-round">share</button>
+      </div>
+    </div>
+  </div>
+  <div class="dynamic-width-card">
+    <div class="card-transparent">
+      <div class="card-body">
+        <div class="embed-responsive embed-responsive-16by9 vid">
+          <iframe class="embed-responsive-item" src="//www.youtube.com/embed/ily2tWrbVEA" allowfullscreen=""></iframe>
+        </div>
+        <div class="video-details"><h6><span class="text__school">GONGSHANG PRIMARY SCHOOL</span><br><span
+                class="font-weight-bold text__participant text__accent-blue">Skyler Ong</span></h6><h5
+                class="video-title">A game using electromagnets and an explanation of the electromagnets able to pick up
+          paper clips</h5></div>
+        <button type="button" class="btn btn-secondary vote-grid-btn" id="entry-16">Upvote!</button>
+        <span id="vote-count-entry-16">0</span><span> votes</span>
+        <button type="button" class="btn btn-secondary share-btn material-icons material-icons-round">share</button>
+      </div>
+    </div>
+  </div>
+  <div class="dynamic-width-card">
+    <div class="card-transparent">
+      <div class="card-body">
+        <div class="embed-responsive embed-responsive-16by9 vid">
+          <iframe class="embed-responsive-item" src="//www.youtube.com/embed/b1kmQsjKRKU" allowfullscreen=""></iframe>
+        </div>
+        <div class="video-details"><h6><span class="text__school">GONGSHANG PRIMARY SCHOOL</span><br><span
+                class="font-weight-bold text__participant text__accent-blue">Jerald Toh Yew Ern</span></h6><h5
+                class="video-title">How electromagnetism works</h5></div>
+        <button type="button" class="btn btn-secondary vote-grid-btn" id="entry-17">Upvote!</button>
+        <span id="vote-count-entry-17">0</span><span> votes</span>
+        <button type="button" class="btn btn-secondary share-btn material-icons material-icons-round">share</button>
+      </div>
+    </div>
+  </div>
+  <div class="dynamic-width-card">
+    <div class="card-transparent">
+      <div class="card-body">
+        <div class="embed-responsive embed-responsive-16by9 vid">
+          <iframe class="embed-responsive-item" src="//www.youtube.com/embed/5zjfDtxNf-w" allowfullscreen=""></iframe>
+        </div>
+        <div class="video-details"><h6><span class="text__school">GONGSHANG PRIMARY SCHOOL</span><br><span
+                class="font-weight-bold text__participant text__accent-blue">TAN JING AN JAVIER</span></h6><h5
+                class="video-title">The Magic of Electromagnetism</h5></div>
+        <button type="button" class="btn btn-secondary vote-grid-btn" id="entry-18">Upvote!</button>
+        <span id="vote-count-entry-18">0</span><span> votes</span>
+        <button type="button" class="btn btn-secondary share-btn material-icons material-icons-round">share</button>
+      </div>
+    </div>
+  </div>
+  <div class="dynamic-width-card">
+    <div class="card-transparent">
+      <div class="card-body">
+        <div class="embed-responsive embed-responsive-16by9 vid">
+          <iframe class="embed-responsive-item" src="//www.youtube.com/embed/RMIvLiMkD2g" allowfullscreen=""></iframe>
+        </div>
+        <div class="video-details"><h6><span class="text__school">HAIG GIRLS' SCHOOL</span><br><span
+                class="font-weight-bold text__participant text__accent-blue">Hannah Elizabeth Koshy</span></h6><h5
+                class="video-title">The Physio-Glove uses the concept of electromagnetism through a glove that can help
+          those suffering from arthritis or hand injuries to improve strength in their fingers.</h5></div>
+        <button type="button" class="btn btn-secondary vote-grid-btn" id="entry-19">Upvote!</button>
+        <span id="vote-count-entry-19">0</span><span> votes</span>
+        <button type="button" class="btn btn-secondary share-btn material-icons material-icons-round">share</button>
+      </div>
+    </div>
+  </div>
+  <div class="dynamic-width-card">
+    <div class="card-transparent">
+      <div class="card-body">
+        <div class="embed-responsive embed-responsive-16by9 vid">
+          <iframe class="embed-responsive-item" src="//www.youtube.com/embed/9-E8qVff3PI" allowfullscreen=""></iframe>
+        </div>
+        <div class="video-details"><h6><span class="text__school">HAIG GIRLS' SCHOOL</span><br><span
+                class="font-weight-bold text__participant text__accent-blue">Meghna Anil</span></h6><h5
+                class="video-title">Fun with Electromagnetism</h5></div>
+        <button type="button" class="btn btn-secondary vote-grid-btn" id="entry-20">Upvote!</button>
+        <span id="vote-count-entry-20">0</span><span> votes</span>
+        <button type="button" class="btn btn-secondary share-btn material-icons material-icons-round">share</button>
+      </div>
+    </div>
+  </div>
+  <div class="dynamic-width-card">
+    <div class="card-transparent">
+      <div class="card-body">
+        <div class="embed-responsive embed-responsive-16by9 vid">
+          <iframe class="embed-responsive-item" src="//www.youtube.com/embed/hl92em8frxA" allowfullscreen=""></iframe>
+        </div>
+        <div class="video-details"><h6><span class="text__school">HAIG GIRLS' SCHOOL</span><br><span
+                class="font-weight-bold text__participant text__accent-blue">Chen Jing</span></h6><h5
+                class="video-title">Explanation and demonstration of Electromagnets</h5></div>
+        <button type="button" class="btn btn-secondary vote-grid-btn" id="entry-21">Upvote!</button>
+        <span id="vote-count-entry-21">0</span><span> votes</span>
+        <button type="button" class="btn btn-secondary share-btn material-icons material-icons-round">share</button>
+      </div>
+    </div>
+  </div>
+  <div class="dynamic-width-card">
+    <div class="card-transparent">
+      <div class="card-body">
+        <div class="embed-responsive embed-responsive-16by9 vid">
+          <iframe class="embed-responsive-item" src="//www.youtube.com/embed/x3Lpwxb4J9E" allowfullscreen=""></iframe>
+        </div>
+        <div class="video-details"><h6><span class="text__school">HENRY PARK PRIMARY SCHOOL</span><br><span
+                class="font-weight-bold text__participant text__accent-blue">Kei Rui Min</span></h6><h5
+                class="video-title">Electromagnet Race Car Experiment</h5></div>
+        <button type="button" class="btn btn-secondary vote-grid-btn" id="entry-22">Upvote!</button>
+        <span id="vote-count-entry-22">0</span><span> votes</span>
+        <button type="button" class="btn btn-secondary share-btn material-icons material-icons-round">share</button>
+      </div>
+    </div>
+  </div>
+  <div class="dynamic-width-card">
+    <div class="card-transparent">
+      <div class="card-body">
+        <div class="embed-responsive embed-responsive-16by9 vid">
+          <iframe class="embed-responsive-item" src="//www.youtube.com/embed/RGFVOgxCSok" allowfullscreen=""></iframe>
+        </div>
+        <div class="video-details"><h6><span class="text__school">HENRY PARK PRIMARY SCHOOL</span><br><span
+                class="font-weight-bold text__participant text__accent-blue">Claudia Low</span></h6><h5
+                class="video-title">Electric Motor Explained</h5></div>
+        <button type="button" class="btn btn-secondary vote-grid-btn" id="entry-23">Upvote!</button>
+        <span id="vote-count-entry-23">0</span><span> votes</span>
+        <button type="button" class="btn btn-secondary share-btn material-icons material-icons-round">share</button>
+      </div>
+    </div>
+  </div>
+  <div class="dynamic-width-card">
+    <div class="card-transparent">
+      <div class="card-body">
+        <div class="embed-responsive embed-responsive-16by9 vid">
+          <iframe class="embed-responsive-item" src="//www.youtube.com/embed/v2t6BSFpl-8" allowfullscreen=""></iframe>
+        </div>
+        <div class="video-details"><h6><span class="text__school">MAHA BODHI SCHOOL</span><br><span
+                class="font-weight-bold text__participant text__accent-blue">Lee Chong Jin, Ian</span></h6><h5
+                class="video-title">Electromagnetism Magic!</h5></div>
+        <button type="button" class="btn btn-secondary vote-grid-btn" id="entry-24">Upvote!</button>
+        <span id="vote-count-entry-24">0</span><span> votes</span>
+        <button type="button" class="btn btn-secondary share-btn material-icons material-icons-round">share</button>
+      </div>
+    </div>
+  </div>
+  <div class="dynamic-width-card">
+    <div class="card-transparent">
+      <div class="card-body">
+        <div class="embed-responsive embed-responsive-16by9 vid">
+          <iframe class="embed-responsive-item" src="//www.youtube.com/embed/u3QMwVDYfoA" allowfullscreen=""></iframe>
+        </div>
+        <div class="video-details"><h6><span class="text__school">MAHA BODHI SCHOOL</span><br><span
+                class="font-weight-bold text__participant text__accent-blue">Lee Kee Herng, Ryan</span></h6><h5
+                class="video-title">Powering a homemade motor with electromagnets</h5></div>
+        <button type="button" class="btn btn-secondary vote-grid-btn" id="entry-25">Upvote!</button>
+        <span id="vote-count-entry-25">0</span><span> votes</span>
+        <button type="button" class="btn btn-secondary share-btn material-icons material-icons-round">share</button>
+      </div>
+    </div>
+  </div>
+  <div class="dynamic-width-card">
+    <div class="card-transparent">
+      <div class="card-body">
+        <div class="embed-responsive embed-responsive-16by9 vid">
+          <iframe class="embed-responsive-item" src="//www.youtube.com/embed/0uB0gFQaxbM" allowfullscreen=""></iframe>
+        </div>
+        <div class="video-details"><h6><span class="text__school">MARIS STELLA HIGH SCHOOL</span><br><span
+                class="font-weight-bold text__participant text__accent-blue">Ge jun kai Russell</span></h6><h5
+                class="video-title">How to make an electromagnet stronger</h5></div>
+        <button type="button" class="btn btn-secondary vote-grid-btn" id="entry-26">Upvote!</button>
+        <span id="vote-count-entry-26">0</span><span> votes</span>
+        <button type="button" class="btn btn-secondary share-btn material-icons material-icons-round">share</button>
+      </div>
+    </div>
+  </div>
+  <div class="dynamic-width-card">
+    <div class="card-transparent">
+      <div class="card-body">
+        <div class="embed-responsive embed-responsive-16by9 vid">
+          <iframe class="embed-responsive-item" src="//www.youtube.com/embed/nszhe5nudy4" allowfullscreen=""></iframe>
+        </div>
+        <div class="video-details"><h6><span class="text__school">MARIS STELLA HIGH SCHOOL</span><br><span
+                class="font-weight-bold text__participant text__accent-blue">Brendon Chan Kai Yi</span></h6><h5
+                class="video-title">Electromagnetic Propeller</h5></div>
+        <button type="button" class="btn btn-secondary vote-grid-btn" id="entry-27">Upvote!</button>
+        <span id="vote-count-entry-27">0</span><span> votes</span>
+        <button type="button" class="btn btn-secondary share-btn material-icons material-icons-round">share</button>
+      </div>
+    </div>
+  </div>
+  <div class="dynamic-width-card">
+    <div class="card-transparent">
+      <div class="card-body">
+        <div class="embed-responsive embed-responsive-16by9 vid">
+          <iframe class="embed-responsive-item" src="//www.youtube.com/embed/7S4ANojZC0E" allowfullscreen=""></iframe>
+        </div>
+        <div class="video-details"><h6><span class="text__school">SEMBAWANG PRIMARY SCHOOL</span><br><span
+                class="font-weight-bold text__participant text__accent-blue">Yap Fei Ran</span></h6><h5
+                class="video-title">Electromagnets in shipping</h5></div>
+        <button type="button" class="btn btn-secondary vote-grid-btn" id="entry-28">Upvote!</button>
+        <span id="vote-count-entry-28">0</span><span> votes</span>
+        <button type="button" class="btn btn-secondary share-btn material-icons material-icons-round">share</button>
+      </div>
+    </div>
+  </div>
+  <div class="dynamic-width-card">
+    <div class="card-transparent">
+      <div class="card-body">
+        <div class="embed-responsive embed-responsive-16by9 vid">
+          <iframe class="embed-responsive-item" src="//www.youtube.com/embed/ESUxa9Pw6ow" allowfullscreen=""></iframe>
+        </div>
+        <div class="video-details"><h6><span class="text__school">SEMBAWANG PRIMARY SCHOOL</span><br><span
+                class="font-weight-bold text__participant text__accent-blue">Nathaniel Eli Vananto</span></h6><h5
+                class="video-title">Magical Solenoid</h5></div>
+        <button type="button" class="btn btn-secondary vote-grid-btn" id="entry-29">Upvote!</button>
+        <span id="vote-count-entry-29">0</span><span> votes</span>
+        <button type="button" class="btn btn-secondary share-btn material-icons material-icons-round">share</button>
+      </div>
+    </div>
+  </div>
+  <div class="dynamic-width-card">
+    <div class="card-transparent">
+      <div class="card-body">
+        <div class="embed-responsive embed-responsive-16by9 vid">
+          <iframe class="embed-responsive-item" src="//www.youtube.com/embed/w90sE7e-Tcs" allowfullscreen=""></iframe>
+        </div>
+        <div class="video-details"><h6><span class="text__school">SEMBAWANG PRIMARY SCHOOL</span><br><span
+                class="font-weight-bold text__participant text__accent-blue">Sarah Lim</span></h6><h5
+                class="video-title">Homopolar Motor</h5></div>
+        <button type="button" class="btn btn-secondary vote-grid-btn" id="entry-30">Upvote!</button>
+        <span id="vote-count-entry-30">0</span><span> votes</span>
+        <button type="button" class="btn btn-secondary share-btn material-icons material-icons-round">share</button>
+      </div>
+    </div>
+  </div>
+  <div class="dynamic-width-card">
+    <div class="card-transparent">
+      <div class="card-body">
+        <div class="embed-responsive embed-responsive-16by9 vid">
+          <iframe class="embed-responsive-item" src="//www.youtube.com/embed/XPwXU0PZOPI" allowfullscreen=""></iframe>
+        </div>
+        <div class="video-details"><h6><span class="text__school">SEMBAWANG PRIMARY SCHOOL</span><br><span
+                class="font-weight-bold text__participant text__accent-blue">Ouyang Rui Tao</span></h6><h5
+                class="video-title">The Levitating Pencil!</h5></div>
+        <button type="button" class="btn btn-secondary vote-grid-btn" id="entry-31">Upvote!</button>
+        <span id="vote-count-entry-31">0</span><span> votes</span>
+        <button type="button" class="btn btn-secondary share-btn material-icons material-icons-round">share</button>
+      </div>
+    </div>
+  </div>
+  <div class="dynamic-width-card">
+    <div class="card-transparent">
+      <div class="card-body">
+        <div class="embed-responsive embed-responsive-16by9 vid">
+          <iframe class="embed-responsive-item" src="//www.youtube.com/embed/hrhmTsU-_io" allowfullscreen=""></iframe>
+        </div>
+        <div class="video-details"><h6><span class="text__school">SENGKANG GREEN PRIMARY SCHOOL</span><br><span
+                class="font-weight-bold text__participant text__accent-blue">Lau Yuan Zhao Harris</span></h6><h5
+                class="video-title">The Electromagnetic Motor</h5></div>
+        <button type="button" class="btn btn-secondary vote-grid-btn" id="entry-32">Upvote!</button>
+        <span id="vote-count-entry-32">0</span><span> votes</span>
+        <button type="button" class="btn btn-secondary share-btn material-icons material-icons-round">share</button>
+      </div>
+    </div>
+  </div>
+  <div class="dynamic-width-card">
+    <div class="card-transparent">
+      <div class="card-body">
+        <div class="embed-responsive embed-responsive-16by9 vid">
+          <iframe class="embed-responsive-item" src="//www.youtube.com/embed/aawf9lw2ItA" allowfullscreen=""></iframe>
+        </div>
+        <div class="video-details"><h6><span class="text__school">SENGKANG GREEN PRIMARY SCHOOL</span><br><span
+                class="font-weight-bold text__participant text__accent-blue">Tay Boon Khai Treyden</span></h6><h5
+                class="video-title">The electromagnetic windmill</h5></div>
+        <button type="button" class="btn btn-secondary vote-grid-btn" id="entry-33">Upvote!</button>
+        <span id="vote-count-entry-33">0</span><span> votes</span>
+        <button type="button" class="btn btn-secondary share-btn material-icons material-icons-round">share</button>
+      </div>
+    </div>
+  </div>
+  <div class="dynamic-width-card">
+    <div class="card-transparent">
+      <div class="card-body">
+        <div class="embed-responsive embed-responsive-16by9 vid">
+          <iframe class="embed-responsive-item" src="//www.youtube.com/embed/fr-LGJEVIoU" allowfullscreen=""></iframe>
+        </div>
+        <div class="video-details"><h6><span
+                class="text__school">SINGAPORE CHINESE GIRLS' PRIMARY SCHOOL</span><br><span
+                class="font-weight-bold text__participant text__accent-blue">Kate Low Li En</span></h6><h5
+                class="video-title">Electromagnetic Pendulum Art</h5></div>
+        <button type="button" class="btn btn-secondary vote-grid-btn" id="entry-34">Upvote!</button>
+        <span id="vote-count-entry-34">0</span><span> votes</span>
+        <button type="button" class="btn btn-secondary share-btn material-icons material-icons-round">share</button>
+      </div>
+    </div>
+  </div>
+  <div class="dynamic-width-card">
+    <div class="card-transparent">
+      <div class="card-body">
+        <div class="embed-responsive embed-responsive-16by9 vid">
+          <iframe class="embed-responsive-item" src="//www.youtube.com/embed/oINJRa39zKM" allowfullscreen=""></iframe>
+        </div>
+        <div class="video-details"><h6><span
+                class="text__school">SINGAPORE CHINESE GIRLS' PRIMARY SCHOOL</span><br><span
+                class="font-weight-bold text__participant text__accent-blue">Grace Lim Yu En</span></h6><h5
+                class="video-title">My mag</h5></div>
+        <button type="button" class="btn btn-secondary vote-grid-btn" id="entry-35">Upvote!</button>
+        <span id="vote-count-entry-35">0</span><span> votes</span>
+        <button type="button" class="btn btn-secondary share-btn material-icons material-icons-round">share</button>
+      </div>
+    </div>
+  </div>
+  <div class="dynamic-width-card">
+    <div class="card-transparent">
+      <div class="card-body">
+        <div class="embed-responsive embed-responsive-16by9 vid">
+          <iframe class="embed-responsive-item" src="//www.youtube.com/embed/1XxibFClPfs" allowfullscreen=""></iframe>
+        </div>
+        <div class="video-details"><h6><span
+                class="text__school">SINGAPORE CHINESE GIRLS' PRIMARY SCHOOL</span><br><span
+                class="font-weight-bold text__participant text__accent-blue">Sarah Yap</span></h6><h5
+                class="video-title">This experiment demonstrates how a electromagnet attracts another magnet, pulling
+          the magnet to itself and causing a string of domino tiles to fall. This experiment video is a submission for
+          the e-THINK Challenge 2020.</h5></div>
+        <button type="button" class="btn btn-secondary vote-grid-btn" id="entry-36">Upvote!</button>
+        <span id="vote-count-entry-36">0</span><span> votes</span>
+        <button type="button" class="btn btn-secondary share-btn material-icons material-icons-round">share</button>
+      </div>
+    </div>
+  </div>
+  <div class="dynamic-width-card">
+    <div class="card-transparent">
+      <div class="card-body">
+        <div class="embed-responsive embed-responsive-16by9 vid">
+          <iframe class="embed-responsive-item" src="//www.youtube.com/embed/1-RIz2dnKzY" allowfullscreen=""></iframe>
+        </div>
+        <div class="video-details"><h6><span
+                class="text__school">SINGAPORE CHINESE GIRLS' PRIMARY SCHOOL</span><br><span
+                class="font-weight-bold text__participant text__accent-blue">Denise</span></h6><h5 class="video-title">
+          How to make a Maglev Train</h5></div>
+        <button type="button" class="btn btn-secondary vote-grid-btn" id="entry-37">Upvote!</button>
+        <span id="vote-count-entry-37">0</span><span> votes</span>
+        <button type="button" class="btn btn-secondary share-btn material-icons material-icons-round">share</button>
+      </div>
+    </div>
+  </div>
+  <div class="dynamic-width-card">
+    <div class="card-transparent">
+      <div class="card-body">
+        <div class="embed-responsive embed-responsive-16by9 vid">
+          <iframe class="embed-responsive-item" src="//www.youtube.com/embed/mdATVN4WXCA" allowfullscreen=""></iframe>
+        </div>
+        <div class="video-details"><h6><span class="text__school">TAO NAN SCHOOL</span><br><span
+                class="font-weight-bold text__participant text__accent-blue">Chye Rui Xin</span></h6><h5
+                class="video-title">Electromagnetism In A Playground (Lorentz Force)</h5></div>
+        <button type="button" class="btn btn-secondary vote-grid-btn" id="entry-38">Upvote!</button>
+        <span id="vote-count-entry-38">0</span><span> votes</span>
+        <button type="button" class="btn btn-secondary share-btn material-icons material-icons-round">share</button>
+      </div>
+    </div>
+  </div>
+  <div class="dynamic-width-card">
+    <div class="card-transparent">
+      <div class="card-body">
+        <div class="embed-responsive embed-responsive-16by9 vid">
+          <iframe class="embed-responsive-item" src="//www.youtube.com/embed/MdMmj-R3PwI" allowfullscreen=""></iframe>
+        </div>
+        <div class="video-details"><h6><span class="text__school">TAO NAN SCHOOL</span><br><span
+                class="font-weight-bold text__participant text__accent-blue">Li Hanrui Harel</span></h6><h5
+                class="video-title">In this e-think challenge, I discovered that when electricity and magnetic field
+          interact, they create a force on the conductor carrying the current. What has a fly got to do with this
+          discovery? Watch until the end to find out!</h5></div>
+        <button type="button" class="btn btn-secondary vote-grid-btn" id="entry-39">Upvote!</button>
+        <span id="vote-count-entry-39">0</span><span> votes</span>
+        <button type="button" class="btn btn-secondary share-btn material-icons material-icons-round">share</button>
+      </div>
+    </div>
+  </div>
+  <div class="dynamic-width-card">
+    <div class="card-transparent">
+      <div class="card-body">
+        <div class="embed-responsive embed-responsive-16by9 vid">
+          <iframe class="embed-responsive-item" src="//www.youtube.com/embed/i_tTJeVlmCw" allowfullscreen=""></iframe>
+        </div>
+        <div class="video-details"><h6><span class="text__school">TAO NAN SCHOOL</span><br><span
+                class="font-weight-bold text__participant text__accent-blue">Ling Jia En Abigail</span></h6><h5
+                class="video-title">my E think challenge solenoid</h5></div>
+        <button type="button" class="btn btn-secondary vote-grid-btn" id="entry-40">Upvote!</button>
+        <span id="vote-count-entry-40">0</span><span> votes</span>
+        <button type="button" class="btn btn-secondary share-btn material-icons material-icons-round">share</button>
+      </div>
+    </div>
+  </div>
+  <div class="dynamic-width-card">
+    <div class="card-transparent">
+      <div class="card-body">
+        <div class="embed-responsive embed-responsive-16by9 vid">
+          <iframe class="embed-responsive-item" src="//www.youtube.com/embed/Ne9Tbzxki1U" allowfullscreen=""></iframe>
+        </div>
+        <div class="video-details"><h6><span class="text__school">TAO NAN SCHOOL</span><br><span
+                class="font-weight-bold text__participant text__accent-blue">Wayne Chan Zee Herng</span></h6><h5
+                class="video-title">Can all types of materials be magnetised?</h5></div>
+        <button type="button" class="btn btn-secondary vote-grid-btn" id="entry-41">Upvote!</button>
+        <span id="vote-count-entry-41">0</span><span> votes</span>
+        <button type="button" class="btn btn-secondary share-btn material-icons material-icons-round">share</button>
+      </div>
+    </div>
+  </div>
+  <div class="dynamic-width-card">
+    <div class="card-transparent">
+      <div class="card-body">
+        <div class="embed-responsive embed-responsive-16by9 vid">
+          <iframe class="embed-responsive-item" src="//www.youtube.com/embed/sW_aEEk0DGw" allowfullscreen=""></iframe>
+        </div>
+        <div class="video-details"><h6><span class="text__school">WHITE SANDS PRIMARY SCHOOL</span><br><span
+                class="font-weight-bold text__participant text__accent-blue">Mohamed Hazarul Rasheed S/O Mohamed Ismail</span>
+        </h6><h5 class="video-title">Deflection of a compass ( e-Think challenge - Mohamed Hazarul Rasheed )</h5></div>
+        <button type="button" class="btn btn-secondary vote-grid-btn" id="entry-42">Upvote!</button>
+        <span id="vote-count-entry-42">0</span><span> votes</span>
+        <button type="button" class="btn btn-secondary share-btn material-icons material-icons-round">share</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--For Production-->
+  <!--<script src="/__/firebase/7.18.0/firebase-app.js"></script>-->
+  <!--<script src="/__/firebase/7.18.0/firebase-auth.js"></script>-->
+  <!--<script src="/__/firebase/7.18.0/firebase-database.js"></script>-->
+  <!--<script src="/__/firebase/7.18.0/firebase-firestore.js"></script>-->
+  <!--<script src="/__/firebase/init.js"></script>-->
+  <!--For Production-->
+
+  <!--For Development Only-->
+  <script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-firestore.js"></script>
+  <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+  <script>
+    const firebaseConfig = {
+      "projectId": "temasek-jc",
+      "databaseURL": "https://temasek-jc.firebaseio.com",
+      "storageBucket": "temasek-jc.appspot.com",
+      "locationId": "us-central",
+      "apiKey": "AIzaSyBXmjJYfRwK-639vtGgA5ZK7AlEM7reJ9A",
+      "authDomain": "temasek-jc.firebaseapp.com",
+      "messagingSenderId": "1083456622235"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const fireUser = new Promise((resolve, reject) => {
+      firebase.auth().onAuthStateChanged(user => {
+        if (user) resolve(user);
+      })
+    });
+  </script>
+  <script src="/authentication.js"></script>
+  <!--For Development Only-->
+
+  <!---JQuery that handles changing the button color--->
+  <script>
+    if (location.hash.length > 1) {
+      $(location.hash.split("/")[0]).parent().parent().parent().css("background", "#222222");
+    }
+    const auth = firebase.auth();
+    // auth.onAuthStateChanged(user => {
+    //   if (!user) {
+    //     $("#exampleModal").modal("show");
+    //   }
+    // })
+    authUi.show(() => $("#exampleModal").modal("hide"));
+    const database = firebase.database();
+    const btnUnactivatedText = "Upvote!";
+    const btnActivatedText = "Upvoted";
+    const voteCount = {};
+
+    function updateVoteCount(key, votes) {
+      // if (!voteCount[key]) voteCount[key] = 0;
+      voteCount[key] = votes;
+      const voteCountText = $(`#vote-count-${key}`);
+      voteCountText[0].textContent = votes;
+    }
+
+    fireUser.then(user => {
+      database.ref(`user-votes/videos/${user.uid}`).once('value', function (snapshot) {
+        snapshot.forEach(function (childSnapshot) {
+          const childKey = childSnapshot.key;
+          const childData = childSnapshot.val();
+          const toggleButton = $(`#${childKey}`);
+          if (childData === 1) {
+            toggleButton.removeClass("btn-secondary");
+            toggleButton.addClass("btn-success");
+            toggleButton.text(btnActivatedText);
+          } else {
+            toggleButton.addClass("btn-secondary");
+            toggleButton.removeClass("btn-success");
+            toggleButton.text(("Upvote!"));
+          }
+        });
+      });
+    });
+    database.ref('videos').once('value', function(snapshot) {
+      snapshot.forEach(function (childSnapshot) {
+        updateVoteCount(childSnapshot.key, childSnapshot.val()?.votes);
+      });
+    });
+    $(document).ready(function(){
+      if (navigator.canShare) {
+        $(".share-btn").click(async (e)=>{
+          try {
+            const $shareButton = $(e.target);
+            await navigator.share({
+              title: "Upvote this video!",
+              text: `${$shareButton.siblings(".video-details").children(".video-title")[0].textContent}`,
+              url: `${location.toString().split("#")[0]}#${$shareButton.siblings(".vote-grid-btn")[0].id}`
+            });
+          } catch (e) {
+            console.log(e)
+          }
+        })
+      } else {
+        $(".share-btn").hide()
+      }
+      $(".vote-grid-btn").click(async function(){
+        if (!auth.currentUser) {
+          $("#exampleModal").modal("show");
+          await fireUser;
+        }
+        const toggleButton = $(this);
+        toggleButton.toggleClass("btn-secondary");
+        toggleButton.toggleClass("btn-success");
+        const id = toggleButton.attr("id");
+        const isButtonSuccess = toggleButton[0].classList.contains("btn-success");
+        toggleButton.text((i, original) => {
+          return original === btnUnactivatedText ? btnActivatedText : btnUnactivatedText;
+        });
+        updateVoteCount(id, (voteCount[id] || 0) + (isButtonSuccess ? 1 : -1));
+        setVote({
+          id: id, collection: "videos",
+          vote: isButtonSuccess ? 1 : null,
+        });
+      });
+    });
+    async function setVote({id, collection, vote}) {
+      database.ref(`votes/${collection}/${id}/${(await fireUser).uid}`).set(vote);
+    }
+  </script>
+</body>

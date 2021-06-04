@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="/styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/bootstrap/js/bootstrap.js"></script>
+    <title>Voting Page</title>
+    <link rel='icon' href='/favicon.ico' type='image/x-icon'/>
+    <link rel="shortcut icon" type="image/jpeg" href="/icons/1080/girl-winking.jpeg" />
+    <meta name='description' content='Voting page description'/>
+    <meta property='og:image' content="/images/icon.png"/>
+  </head>
+  <body>
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content" id="firebaseui-auth-container">
+        </div>
+      </div>
+    </div>
+    <h1 class="text-center toptitle">Video Submissions</h1>
+
+    <!---Every container in the jumbotron is a separate card video entry. We need to vary the source link video id and submission text for each container this is a sample of 3 vids--->
+    <div class='jumbotron jumbo-bg'>
+
+      <div class="container">
+        <div class="card">
+          <div class="card-header">
+            <h1 class="display-4">Porter Robinson - Shelter</h1>
+          </div>
+          <div class="card-body">
+            <div class="embed-responsive embed-responsive-16by9 vid">
+                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/fzQ6gRAEoy0" allowfullscreen></iframe>
+            </div>
+            <button type="button" class="btn btn-secondary btn-xl mx-auto d-block" id="entry-0">Upvote!</button>
+            <span id="vote-count-entry-0">0</span>
+            <span> votes</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="card vid">
+          <div class="card-header">
+            <h1 class="display-4">Galdive - Dear Matias</h1>
+          </div>
+          <div class="card-body">
+            <div class="embed-responsive embed-responsive-16by9 vid">
+                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/F1mAVHBB524" allowfullscreen></iframe>
+            </div>
+            <button type="button" class="btn btn-secondary btn-xl mx-auto d-block" id="entry-1">Upvote!</button>
+            <span id="vote-count-entry-1">0</span>
+            <span> votes</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="card vid">
+          <div class="card-header">
+            <h1 class="display-4">Eve - How to eat life</h1>
+          </div>
+          <div class="card-body">
+            <div class="embed-responsive embed-responsive-16by9 vid">
+                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/U7L-3VXAkSA" allowfullscreen></iframe>
+            </div>
+            <button type="button" class="btn btn-secondary btn-xl mx-auto d-block" id="entry-2">Upvote!</button>
+            <span id="vote-count-entry-2">0</span>
+            <span> votes</span>
+          </div>
+        </div>
+      </div>
+      <!--For Production-->
+      <!--<script src="/__/firebase/7.18.0/firebase-app.js"></script>-->
+      <!--<script src="/__/firebase/7.18.0/firebase-auth.js"></script>-->
+      <!--<script src="/__/firebase/7.18.0/firebase-database.js"></script>-->
+      <!--<script src="/__/firebase/7.18.0/firebase-firestore.js"></script>-->
+      <!--<script src="/__/firebase/init.js"></script>-->
+      <!--For Production-->
+
+      <!--For Development Only-->
+      <script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-app.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-auth.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-database.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-firestore.js"></script>
+      <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+      <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+      <script>
+        const firebaseConfig = {
+          "projectId": "temasek-jc",
+          "databaseURL": "https://temasek-jc.firebaseio.com",
+          "storageBucket": "temasek-jc.appspot.com",
+          "locationId": "us-central",
+          "apiKey": "AIzaSyBXmjJYfRwK-639vtGgA5ZK7AlEM7reJ9A",
+          "authDomain": "temasek-jc.firebaseapp.com",
+          "messagingSenderId": "1083456622235"
+        };
+        firebase.initializeApp(firebaseConfig);
+        const fireUser = new Promise((resolve, reject) => {
+          firebase.auth().onAuthStateChanged(user => {
+            if (user) resolve(user);
+          })
+        });
+      </script>
+      <script src="/authentication.js"></script>
+      <!--For Development Only-->
+
+      <!---JQuery that handles changing the button color--->
+      <script>
+        const auth = firebase.auth();
+        // auth.onAuthStateChanged(user => {
+        //   if (!user) {
+        //     $("#exampleModal").modal("show");
+        //   }
+        // })
+        authUi.show(() => $("#exampleModal").modal("hide"));
+        const database = firebase.database();
+        const btnUnactivatedText = "Upvote!";
+        const btnActivatedText = "Upvoted";
+        const voteCount = {};
+
+        function updateVoteCount(key, votes) {
+          // if (!voteCount[key]) voteCount[key] = 0;
+          voteCount[key] = votes;
+          const voteCountText = $(`#vote-count-${key}`);
+          voteCountText[0].textContent = votes;
+        }
+
+        fireUser.then(user => {
+          database.ref(`user-votes/videos/${user.uid}`).once('value', function (snapshot) {
+            console.table(snapshot.val())
+            snapshot.forEach(function (childSnapshot) {
+              const childKey = childSnapshot.key;
+              const childData = childSnapshot.val();
+              // console.log(childSnapshot);
+              const toggleButton = $(`#${childKey}`);
+              if (childData === 1) {
+                toggleButton.removeClass("btn-secondary");
+                toggleButton.addClass("btn-success");
+                toggleButton.text(btnActivatedText);
+              } else {
+                toggleButton.addClass("btn-secondary");
+                toggleButton.removeClass("btn-success");
+                toggleButton.text(("Upvote!"));
+              }
+            });
+          });
+        });
+        database.ref('videos').once('value', function(snapshot) {
+          snapshot.forEach(function (childSnapshot) {
+            updateVoteCount(childSnapshot.key, childSnapshot.val()?.votes);
+          });
+        });
+        $(document).ready(function(){
+          $("button").click(async function(){
+            if (!auth.currentUser) {
+              $("#exampleModal").modal("show");
+              await fireUser;
+            }
+            const toggleButton = $(this);
+            toggleButton.toggleClass("btn-secondary");
+            toggleButton.toggleClass("btn-success");
+            const id = toggleButton.attr("id");
+            const isButtonSuccess = toggleButton[0].classList.contains("btn-success");
+            toggleButton.text((i, original) => {
+              return original === btnUnactivatedText ? btnActivatedText : btnUnactivatedText;
+            });
+            updateVoteCount(id, (voteCount[id] || 0) + (isButtonSuccess ? 1 : -1));
+            setVote({
+              id: id, collection: "videos",
+              vote: isButtonSuccess ? 1 : null,
+            });
+          });
+        });
+        async function setVote({id, collection, vote}) {
+          // const uid = firebase.auth().currentUser.uid;TODO
+          database.ref(`votes/${collection}/${id}/${(await fireUser).uid}`).set(vote);
+        }
+      </script>
+
+    </div>
+  </body>
+</html>
