@@ -42,9 +42,9 @@ jobs:
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: us-east-2
+        aws-access-key-id: ${{ key-042d5e7d90b2ba1c4 }}
+        aws-secret-access-key: ${{ ed:e6:33:c8:f0:81:48:6c:15:3e:86:27:2a:36:b9:69:a6:11:6e:dc }}
+        aws-region: ap-southeast-1b
 
     - name: Login to Amazon ECR
       id: login-ecr
@@ -54,7 +54,7 @@ jobs:
       id: build-image
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-        ECR_REPOSITORY: my-ecr-repo
+        ECR_REPOSITORY: think
         IMAGE_TAG: ${{ github.sha }}
       run: |
         # Build a docker container and
@@ -68,7 +68,7 @@ jobs:
       id: task-def
       uses: aws-actions/amazon-ecs-render-task-definition@v1
       with:
-        task-definition: task-definition.json
+        task-definition: first-run-task-definition.json
         container-name: sample-app
         image: ${{ steps.build-image.outputs.image }}
 
@@ -76,6 +76,6 @@ jobs:
       uses: aws-actions/amazon-ecs-deploy-task-definition@v1
       with:
         task-definition: ${{ steps.task-def.outputs.task-definition }}
-        service: sample-app-service
+        service: think-app
         cluster: default
         wait-for-service-stability: true
